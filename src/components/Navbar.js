@@ -20,10 +20,16 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur border-pink-100" : "bg-transparent"
-      }`}
-    >
+  className={`fixed top-0 z-50 w-full transition-all duration-300
+    backdrop-blur-sm
+    ${
+      scrolled
+        ? "bg-white/80 shadow-sm"
+        : "bg-white/40"
+    }
+  `}
+>
+
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <a href="#home" className="flex items-center gap-2">

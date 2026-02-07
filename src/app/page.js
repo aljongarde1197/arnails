@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Footer from "@/components/Footer";
-import { FaFacebookF, FaInstagram, FaTwitter, FaTiktok } from "react-icons/fa";
+import { FaFacebookF, FaInstagram, FaTwitter, FaTiktok, FaMobileAlt } from "react-icons/fa";
 
 function GalleryGrid() {
   const galleryItems = [
@@ -338,7 +338,7 @@ export default function Home() {
             <div className="flex flex-col gap-8 md:flex-row md:justify-center md:gap-8">
               {[
                 {
-                  name: "Juliana Mae",
+                  name: "Kris",
                   feedback:
                     "My first ever try magpa nail extension ing ato diay ang feeling no? Hahaha na relax ko kay naka feel kog katugon, wala jud siya nag dali, very kuha nya akong gusto na inspo ug naa pay pa add nga golden balls. Thank you so much sa service ni mam jam. Satisfied costumer",
                   img: "/images/customer1.jpg",
@@ -386,7 +386,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              Contact Us
+              Contact Me
             </motion.h2>
 
             <motion.p
@@ -407,8 +407,10 @@ export default function Home() {
               transition={{ delay: 0.4, duration: 0.8 }}
             >
               <div className="flex items-center gap-3 bg-pink-50 px-6 py-4 rounded-xl shadow-md">
-                <span className="text-2xl">📞</span>
-                <span className="text-pink-600 font-semibold text-sm sm:text-base">+1 (555) 123-4567</span>
+                <span className="text-2xl">
+                  <FaMobileAlt />
+                </span>
+                <span className="text-pink-600 font-semibold text-sm sm:text-base">0994-356-7688</span>
               </div>
 
               <div className="flex items-center gap-3 bg-pink-50 px-6 py-4 rounded-xl shadow-md">
@@ -426,7 +428,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <motion.form
+            {/* <motion.form
               className="mt-8 flex flex-col gap-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -439,7 +441,7 @@ export default function Home() {
               <button type="submit" className="bg-pink-500 text-white px-6 py-3 rounded-lg hover:bg-pink-600 transition">
                 Send Message
               </button>
-            </motion.form>
+            </motion.form> */}
           </div>
         </section>
       </main>
