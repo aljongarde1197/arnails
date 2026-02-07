@@ -4,6 +4,8 @@ import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
+import Stats from "@/components/Stats";
+import VideoGallery from "@/components/VideoGallery";
 import Footer from "@/components/Footer";
 import { FaFacebookF, FaInstagram, FaTwitter, FaTiktok, FaMobileAlt } from "react-icons/fa";
 
@@ -34,7 +36,7 @@ function GalleryGrid() {
 
   return (
     <>
-      <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid gap-6 grid-cols-2 sm:grid-cols-2 md:grid-cols-3">
         {galleryItems.map((item, index) => (
           <motion.div
             key={index}
@@ -174,7 +176,7 @@ export default function Home() {
             {/* Button */}
             <motion.a
               href="#contact"
-              className="inline-block rounded-full px-6 md:px-8 py-3 md:py-4 font-medium text-white shadow-lg shadow-pink-300/50 transition transform hover:scale-105 hover:shadow-xl bg-gradient-to-br from-pink-300 via-pink-400 to-pink-500"
+              className="inline-block rounded-full px-6 md:px-8 py-3 md:py-4 font-medium text-white shadow-lg shadow-pink-300/50 transition transform hover:scale-105 hover:shadow-xl bg-gradient-to-br from-pink-300 via-pink-400 to-pink-500 mt-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.4, duration: 0.8 }}
@@ -185,98 +187,115 @@ export default function Home() {
           
         </section>
 
-        {/* Services */}
-<section id="services" className="px-6 md:px-12 py-20 bg-white">
-  <div className="mx-auto max-w-6xl text-center">
-    <motion.h1
-      className="text-3xl sm:text-4xl md:text-5xl text-pink-600 font-primary mb-12 md:mb-20"
+        <Stats/>
+
+       {/* Services */}
+        <section id="services" className="px-6 md:px-12 py-20 bg-white">
+          <div className="mx-auto max-w-6xl text-center">
+            <motion.h1
+              className="text-3xl sm:text-4xl md:text-5xl text-pink-600 font-primary mb-12 md:mb-20"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+            >
+              My Services
+            </motion.h1>
+
+            {/* Services Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {[
+                {
+                  title: "Manicures",
+                  desc: "I love giving your nails that perfect, polished look—whether it’s classic or modern, I make sure your hands feel as beautiful as they look.",
+                  img: "/images/section_manicures.jpg",
+                },
+                {
+                  title: "Nail Art",
+                  desc: "Your nails are a canvas! I create custom designs for every mood—subtle elegance or bold creativity, I’ll bring your vision to life.",
+                  img: "/images/section_nail_arts.jpg",
+                },
+                {
+                  title: "Nail Extensions",
+                  desc: "Need that extra length or strength? I craft extensions that look natural and elegant, so your nails feel strong and stunning every day.",
+                  img: "/images/section_acrylic_nails.jpg",
+                },
+              ].map((service, index) => (
+                <motion.div
+                  key={service.title}
+                  className="bg-pink-50 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 flex flex-col items-center text-center p-6"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.3, duration: 0.8 }}
+                >
+                  {/* Image */}
+                  <div className="relative h-48 w-full rounded-xl overflow-hidden mb-4">
+                    <Image
+                      src={service.img}
+                      alt={service.title}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-2xl sm:text-3xl text-pink-700 font-primary mb-2">
+                    {service.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-gray-700 text-sm sm:text-base">
+                    {service.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
+
+
+       <section id="gallery" className="px-4 sm:px-6 md:px-12 lg:px-20 py-16 sm:py-20 bg-pink-50">
+  <div className="mx-auto max-w-7xl flex flex-col items-center gap-16">
+    <motion.h2
+      className="mb-8 sm:mb-12 text-3xl sm:text-4xl md:text-5xl font-primary text-pink-600"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: 0.6, duration: 0.8 }}
+      transition={{ duration: 0.8 }}
     >
-      Our Services
-    </motion.h1>
+      My Gallery
+    </motion.h2>
 
-    <div className="flex flex-col items-center gap-12 md:flex-row md:justify-center">
-      {[
-        {
-          title: "Manicures",
-          desc: "Classic and modern manicures designed to keep your nails beautiful.",
-          img: "/images/section_manicures.jpg",
-        },
-        {
-          title: "Nail Art",
-          desc: "Custom nail designs for any style, from subtle elegance to bold creativity.",
-          img: "/images/section_nail_arts.jpg",
-        },
-       {
-          title: "Nail Extensions",
-          desc: "Beautifully crafted nail extensions that add length, strength, and elegance for a flawless finish.",
-          img: "/images/section_acrylic_nails.jpg",
-        }
+    <GalleryGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full" />
 
-      ].map((service, index) => (
-        <motion.div
-          key={service.title}
-          className="flex flex-col items-center text-center w-full sm:w-64 md:w-72"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: index * 0.3, duration: 0.8 }}
-        >
-          {/* Image */}
-          <div className="relative h-48 w-48 rounded-full border-4 border-pink-500 shadow-lg overflow-hidden bg-pink-100 mb-6">
-            <Image
-              src={service.img}
-              alt={service.title}
-              fill
-              className="object-cover"
-            />
-          </div>
+    <motion.section
+      className="py-10 overflow-hidden"
+      initial={{ opacity: 0, y: 40 }}     // start hidden and slightly down
+      whileInView={{ opacity: 1, y: 0 }}  // animate in when in viewport
+      viewport={{ once: true }}           // only animate once
+      transition={{ duration: 0.8 }}      // smooth transition
+    >
+      {/* ... your VideoGallery component here ... */}
+        <VideoGallery className="w-full max-w-md sm:max-w-lg md:max-w-3xl mt-12" />
+    </motion.section>
 
-          {/* Title */}
-          <h3 className="text-2xl sm:text-3xl text-pink-700 font-primary mb-2">
-            {service.title}
-          </h3>
-
-          {/* Description */}
-          <p className="text-gray-600 text-sm sm:text-base px-4">
-            {service.desc}
-          </p>
-        </motion.div>
-      ))}
-    </div>
+  
   </div>
 </section>
 
 
-        {/* Gallery */}
-        <section id="gallery" className="px-6 md:px-12 py-20 bg-pink-50">
-          <div className="mx-auto max-w-6xl text-center">
-            <motion.h2
-              className="mb-12 text-3xl sm:text-4xl md:text-5xl font-primary text-pink-600"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              My Gallery
-            </motion.h2>
-
-            <GalleryGrid />
-          </div>
-        </section>
-
         {/* About */}
-        <section id="about" className="relative px-6 md:px-12 py-20 bg-pink-50 overflow-hidden">
+        <section id="about" className="relative px-6 md:px-12 py-20 bg-white overflow-hidden">
           <div className="absolute -top-10 -left-10 w-32 h-32 bg-pink-200/50 rounded-full blur-3xl pointer-events-none"></div>
           <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-pink-300/40 rounded-full blur-3xl pointer-events-none"></div>
 
           <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-12 relative z-10 space-y-6 md:space-y-0">
             {/* Image */}
             <motion.div
-              className="relative w-full md:w-1/2 h-64 sm:h-80 md:h-96 rounded-xl overflow-hidden shadow-lg bg-white"
+              className="relative w-full md:w-1/2 h-64 sm:h-80 md:h-96 rounded-xl overflow-hidden shadow-lg bg-pink-50"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -307,15 +326,15 @@ export default function Home() {
               </p>
 
               <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-                AR Nails began as a simple hobby—an outlet for creativity and a love for beautiful nails. With time, patience, and a growing passion, that small hobby slowly turned into a dream worth chasing. Finding the courage to take the next step, she transformed that passion into a business reality.
+                AR Nails started as a simple hobby for me—a way to be creative and share my love for beautiful nails. Over time, with patience and passion, that little hobby grew into a dream I knew I had to chase. Finding the courage to take the next step, I turned that passion into a business.
               </p>
 
               <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-                With the support of her boyfriend, AR Nails started in a small, humble studio built with love and hard work. It may not be perfect yet, but every detail inside reflects dedication, growth, and heart. What matters most is not how the space looks, but the care, effort, and results delivered to every client.
+                With the support of my boyfriend, I opened a small, humble studio built with love and hard work. It might not be perfect yet, but every detail reflects my dedication, growth, and heart. For me, it’s not about how the space looks—it’s about the care, effort, and results I give to every client.
               </p>
 
               <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-                As a solo manicurist, every set is personally crafted with patience, precision, and high-quality products. From simple, elegant manicures to detailed nail art, the focus is always on listening, understanding, and bringing each client’s desired look to life—so they leave feeling confident, happy, and proud of their nails.
+                As a solo manicurist, I personally craft every set with patience, precision, and high-quality products. From simple, elegant manicures to detailed nail art, I always focus on listening, understanding, and bringing each client’s vision to life—so they leave feeling confident, happy, and proud of their nails.
               </p>
             </motion.div>
           </div>
@@ -323,7 +342,7 @@ export default function Home() {
 
 
         {/* Customer Feedback */}
-        <section id="feedback" className="px-6 md:px-12 py-20 bg-white">
+        <section id="feedback" className="px-6 md:px-12 py-20 bg-pink-50">
           <div className="mx-auto max-w-6xl text-center">
             <motion.h2
               className="mb-12 text-3xl sm:text-4xl md:text-5xl font-primary text-pink-600"
@@ -332,7 +351,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              What Our Customers Say
+              What My Clients Say
             </motion.h2>
 
             <div className="flex flex-col gap-8 md:flex-row md:justify-center md:gap-8">
@@ -358,7 +377,7 @@ export default function Home() {
               ].map((item, index) => (
                 <motion.div
                   key={index}
-                  className="relative bg-pink-50 rounded-xl shadow-lg p-6 md:w-80 w-full mx-auto"
+                  className="relative bg-white rounded-xl shadow-lg p-6 md:w-80 w-full mx-auto"
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}

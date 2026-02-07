@@ -25,7 +25,7 @@ export default function Navbar() {
     ${
       scrolled
         ? "bg-white/80 shadow-sm"
-        : "bg-white/40"
+        : "bg-white/30"
     }
   `}
 >
