@@ -5,15 +5,16 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Footer from "@/components/Footer";
+import { FaFacebookF, FaInstagram, FaTwitter, FaTiktok } from "react-icons/fa";
 
 function GalleryGrid() {
   const galleryItems = [
-    { title: "Manicures", img: "/images/section_manicures.jpg" },
-    { title: "Nail Art", img: "/images/section_nail_arts.jpg" },
-    { title: "Acrylic Nails", img: "/images/section_acrylic_nails.jpg" },
-    { title: "Manicures 2", img: "/images/section_manicures.jpg" },
-    { title: "Nail Art 2", img: "/images/section_nail_arts.jpg" },
-    { title: "Acrylic Nails 2", img: "/images/section_acrylic_nails.jpg" },
+    { title: "Tiger Print", img: "/images/showcase/showcase_1.jpg" },
+    { title: "Floral Art", img: "/images/showcase/showcase_2.jpg" },
+    { title: "Crimson Cross", img: "/images/showcase/showcase_3.jpg" },
+    { title: "Latte", img: "/images/showcase/showcase_7.jpg" },
+    { title: "Butterfly Art", img: "/images/showcase/showcase_5.jpg" },
+    { title: "Marble White", img: "/images/showcase/showcase_6.jpg" },
   ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +56,7 @@ function GalleryGrid() {
             {/* Overlay with title */}
             <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
               <div className="bg-white/70 px-4 py-2 rounded-md">
-                <span className="text-pink-600 font-semibold">{item.title}</span>
+                <span className="text-pink-600 font-thin font-secondary tracking-widest">{item.title}</span>
               </div>
             </div>
           </motion.div>
@@ -126,6 +127,7 @@ export default function Home() {
           className="relative flex min-h-screen w-full items-center justify-center px-6 md:px-12 bg-cover bg-center"
           style={{ backgroundImage: "url('/images/home_bg.png')" }}
         >
+
           {/* Overlay for readability */}
           <div className="absolute inset-0"></div>
 
@@ -180,64 +182,74 @@ export default function Home() {
               Book an Appointment
             </motion.a>
           </div>
+          
         </section>
 
         {/* Services */}
-        <section id="services" className="px-6 md:px-12 py-20 bg-white">
-          <div className="mx-auto max-w-6xl text-center">
-            <motion.h1
-              className="text-3xl sm:text-4xl md:text-5xl text-pink-600 font-primary mb-12 md:mb-20"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-            >
-              Our Services
-            </motion.h1>
+<section id="services" className="px-6 md:px-12 py-20 bg-white">
+  <div className="mx-auto max-w-6xl text-center">
+    <motion.h1
+      className="text-3xl sm:text-4xl md:text-5xl text-pink-600 font-primary mb-12 md:mb-20"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: 0.6, duration: 0.8 }}
+    >
+      Our Services
+    </motion.h1>
 
-            <div className="flex flex-col items-center gap-12 md:flex-row md:justify-center md:gap-12">
-              {[
-                {
-                  title: "Manicures",
-                  desc: "Classic and modern manicures designed to keep your nails beautiful.",
-                  img: "/images/section_manicures.jpg",
-                },
-                {
-                  title: "Nail Art",
-                  desc: "Custom nail designs for any style, from subtle elegance to bold creativity.",
-                  img: "/images/section_nail_arts.jpg",
-                },
-                {
-                  title: "Acrylic Nails",
-                  desc: "Durable, long-lasting acrylic nails for a flawless and glamorous look.",
-                  img: "/images/section_acrylic_nails.jpg",
-                },
-              ].map((service, index) => (
-                <motion.div
-                  key={service.title}
-                  className="relative flex flex-col items-center"
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.3, duration: 0.8 }}
-                >
-                  {/* Card with title & description */}
-                  <div className="mt-32 md:mt-36 w-full sm:w-64 md:w-72 bg-gray-100 rounded-xl p-6 shadow-md text-center">
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl text-pink-700 font-primary mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm sm:text-base">{service.desc}</p>
-                  </div>
+    <div className="flex flex-col items-center gap-12 md:flex-row md:justify-center">
+      {[
+        {
+          title: "Manicures",
+          desc: "Classic and modern manicures designed to keep your nails beautiful.",
+          img: "/images/section_manicures.jpg",
+        },
+        {
+          title: "Nail Art",
+          desc: "Custom nail designs for any style, from subtle elegance to bold creativity.",
+          img: "/images/section_nail_arts.jpg",
+        },
+       {
+          title: "Nail Extensions",
+          desc: "Beautifully crafted nail extensions that add length, strength, and elegance for a flawless finish.",
+          img: "/images/section_acrylic_nails.jpg",
+        }
 
-                  {/* Image */}
-                  <div className="absolute -top-12 flex h-48 w-48 sm:h-50 sm:w-50 items-center justify-center rounded-full border-4 border-pink-500 shadow-lg overflow-hidden bg-pink-100">
-                    <Image src={service.img} alt={service.title} fill className="object-cover" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+      ].map((service, index) => (
+        <motion.div
+          key={service.title}
+          className="flex flex-col items-center text-center w-full sm:w-64 md:w-72"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.3, duration: 0.8 }}
+        >
+          {/* Image */}
+          <div className="relative h-48 w-48 rounded-full border-4 border-pink-500 shadow-lg overflow-hidden bg-pink-100 mb-6">
+            <Image
+              src={service.img}
+              alt={service.title}
+              fill
+              className="object-cover"
+            />
           </div>
-        </section>
+
+          {/* Title */}
+          <h3 className="text-2xl sm:text-3xl text-pink-700 font-primary mb-2">
+            {service.title}
+          </h3>
+
+          {/* Description */}
+          <p className="text-gray-600 text-sm sm:text-base px-4">
+            {service.desc}
+          </p>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
         {/* Gallery */}
         <section id="gallery" className="px-6 md:px-12 py-20 bg-pink-50">
@@ -249,7 +261,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              Gallery
+              My Gallery
             </motion.h2>
 
             <GalleryGrid />
@@ -264,17 +276,17 @@ export default function Home() {
           <div className="mx-auto max-w-6xl flex flex-col md:flex-row items-center gap-12 relative z-10 space-y-6 md:space-y-0">
             {/* Image */}
             <motion.div
-              className="relative w-full md:w-1/2 h-64 sm:h-80 md:h-96 rounded-xl overflow-hidden shadow-lg"
+              className="relative w-full md:w-1/2 h-64 sm:h-80 md:h-96 rounded-xl overflow-hidden shadow-lg bg-white"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
               <Image
-                src="/images/section_manicures.jpg"
+                src="/images/about_us.png"
                 alt="About AR Nails"
                 fill
-                className="object-cover"
+                className="object-contain"
               />
             </motion.div>
 
@@ -291,18 +303,24 @@ export default function Home() {
               </h2>
 
               <p className="text-pink-700 italic font-semibold text-base sm:text-lg md:text-xl">
-                "Your nails, our masterpiece."
+                "Crafted with care, one set at a time."
               </p>
 
               <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-                At AR Nails, we are dedicated to creating beautiful, healthy nails that make you feel confident and glamorous. Our team uses high-quality products and provides personalized care to ensure each visit is a pampering experience.
+                AR Nails began as a simple hobby—an outlet for creativity and a love for beautiful nails. With time, patience, and a growing passion, that small hobby slowly turned into a dream worth chasing. Finding the courage to take the next step, she transformed that passion into a business reality.
               </p>
+
               <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-                From classic manicures to creative nail art, we combine precision, creativity, and hygiene to deliver flawless results every time. Your satisfaction is our top priority.
+                With the support of her boyfriend, AR Nails started in a small, humble studio built with love and hard work. It may not be perfect yet, but every detail inside reflects dedication, growth, and heart. What matters most is not how the space looks, but the care, effort, and results delivered to every client.
+              </p>
+
+              <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                As a solo manicurist, every set is personally crafted with patience, precision, and high-quality products. From simple, elegant manicures to detailed nail art, the focus is always on listening, understanding, and bringing each client’s desired look to life—so they leave feeling confident, happy, and proud of their nails.
               </p>
             </motion.div>
           </div>
         </section>
+
 
         {/* Customer Feedback */}
         <section id="feedback" className="px-6 md:px-12 py-20 bg-white">
@@ -320,21 +338,21 @@ export default function Home() {
             <div className="flex flex-col gap-8 md:flex-row md:justify-center md:gap-8">
               {[
                 {
-                  name: "Emily R.",
+                  name: "Juliana Mae",
                   feedback:
-                    "AR Nails always delivers perfect nails! The staff is friendly, and I always leave feeling pampered.",
+                    "My first ever try magpa nail extension ing ato diay ang feeling no? Hahaha na relax ko kay naka feel kog katugon, wala jud siya nag dali, very kuha nya akong gusto na inspo ug naa pay pa add nga golden balls. Thank you so much sa service ni mam jam. Satisfied costumer",
                   img: "/images/customer1.jpg",
                 },
                 {
-                  name: "Sophia L.",
+                  name: "Zybell",
                   feedback:
-                    "I love their nail art designs! Every time I come, I get compliments on my nails.",
+                    "so fretehhhhh. Thanks to AR NAILS",
                   img: "/images/customer2.jpg",
                 },
                 {
-                  name: "Olivia M.",
+                  name: "Kylle",
                   feedback:
-                    "Professional and welcoming! The manicure and acrylics last so long and look amazing.",
+                    "Thankyouuuu pud bi, pa nails rako balik puhon sa imoha",
                   img: "/images/customer3.jpg",
                 },
               ].map((item, index) => (
@@ -346,8 +364,9 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.3, duration: 0.8 }}
                 >
-                  <p className="text-gray-700 text-sm mb-4">{item.feedback}</p>
                   <h3 className="text-pink-600 font-semibold">{item.name}</h3>
+                  <p className="text-gray-700 text-sm mt-4">{item.feedback}</p>
+                  
                 </motion.div>
               ))}
             </div>
@@ -377,7 +396,7 @@ export default function Home() {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Have questions or want to book an appointment? We'd love to hear from you!
+              Have questions or want to book an appointment? I would love to hear from you!
             </motion.p>
 
             <motion.div
@@ -393,8 +412,17 @@ export default function Home() {
               </div>
 
               <div className="flex items-center gap-3 bg-pink-50 px-6 py-4 rounded-xl shadow-md">
-                <span className="text-2xl">📧</span>
-                <span className="text-pink-600 font-semibold text-sm sm:text-base">info@arnails.com</span>
+                <span className="text-2xl">
+                  <a
+                  href="https://www.facebook.com/profile.php?id=61586243961464"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-pink-500 transition transform hover:scale-110"
+                >
+                  <FaFacebookF />
+                </a>
+                </span>
+                <span className="text-pink-600 font-semibold text-sm sm:text-base">AR Nails</span>
               </div>
             </motion.div>
 

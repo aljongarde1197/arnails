@@ -25,7 +25,7 @@ export default function Footer() {
         {/* Social Media Links */}
         <div className="flex items-center gap-6 text-2xl">
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/profile.php?id=61586243961464"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition transform hover:scale-110"
@@ -33,23 +33,23 @@ export default function Footer() {
             <FaFacebookF />
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/jaaaaaammmmms"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition transform hover:scale-110"
           >
             <FaInstagram />
           </a>
-          <a
+          {/* <a
             href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition transform hover:scale-110"
           >
             <FaTwitter />
-          </a>
+          </a> */}
           <a
-            href="https://tiktok.com"
+            href="https://www.tiktok.com/@misscutesy5"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-pink-500 transition transform hover:scale-110"
