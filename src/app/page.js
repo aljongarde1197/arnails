@@ -279,7 +279,7 @@ export default function Home() {
       transition={{ duration: 0.8 }}      // smooth transition
     >
       {/* ... your VideoGallery component here ... */}
-        <VideoGallery className="w-full max-w-md sm:max-w-lg md:max-w-3xl mt-12" />
+        <VideoGallery />
     </motion.section>
 
   
